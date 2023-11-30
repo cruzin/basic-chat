@@ -3,7 +3,6 @@
 import Chat from "@/components/Chat/Chat";
 import { useEffect, useRef, useState } from "react";
 import { MsgType } from "@/components/hooks/useChat";
-import styles from "./ChatPage.module.css";
 
 
 
@@ -42,7 +41,7 @@ const ChatPage = ({ params:{ chatId} }: { params: { chatId: string }}) => {
 
 
   return (
-    <div className={styles.chatPageWrapper}>
+    <div>
       {doneFetching && <Chat chatId={chatId} preExistingMessages={messageHistory} />}
     </div>
   );

@@ -13,13 +13,11 @@ function SocketHandler(req, res){
 
     io.on('connection', socket => {
       socket.on('input-change', msg => {
-        console.log(msg);
         const name = msg.user;
         const message = msg.message;
-        const time = new Date().getTime(); //TODO deprecate this
-        const chatId = 1; //TODO more than 1 chat is beyond the scope of this project, but I want to add that later
+        const time = new Date().getTime();
+        const chatId = 1; //TODO more than 1 chat is beyond the scope of this challenge, but I want to add that later
         messagesRepo.create(name,message, time, chatId);
-        console.log("made db entry");
         socket.broadcast.emit('update-input', msg)
       })
     })

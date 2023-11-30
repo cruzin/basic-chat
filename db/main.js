@@ -44,7 +44,7 @@ function main() {
       return messagesRepo.getMessages(project.id);
     })
     .then((messages) => {
-      console.log("\nRetrieved project messages from database");
+      console.log("\nRetrieved chat messages from database");
       return new Promise((resolve, reject) => {
         messages.forEach((message) => {
           console.log(`message id = ${message.id}`);

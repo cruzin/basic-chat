@@ -18,12 +18,12 @@ export const GuestUserProvider: React.FC<{ children: ReactNode }> = ({ children 
   );
 };
 
-export const useGuestUser = (): UserContextProps => {
+export function useGuestUser(): UserContextProps {
   const context = useContext(GuestUserContext);
   if (!context) {
     throw new Error("useGuestUser must be used within a GuestUserProvider");
   }
   return context;
-};
+}
 
 export default { useGuestUser, GuestUserProvider };

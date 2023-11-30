@@ -17,12 +17,12 @@ const Chat = ({ chatId, preExistingMessages }: { chatId?: string, preExistingMes
     return null;
   }
 
-  const handleMessageSubmit = useCallback((message: string) => {
+  const handleMessageSubmit = (message: string) => {
     const newMessage = { user: guestUser, message: message, timeStamp: new Date().getTime() };
     setMessageHistory([...messageHistory, newMessage]);
 
     webSocket?.current?.emit("input-change", newMessage);
-  }, [webSocket, messageHistory, guestUser]);
+  };
 
 
   return (

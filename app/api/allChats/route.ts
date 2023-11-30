@@ -1,5 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from "next/server";
+import type { NextApiResponse } from 'next'
+import { NextResponse,NextRequest } from "next/server";
 import { chatsRepo } from "@/db/consts";
 
 
@@ -8,7 +8,7 @@ type Data = {
 }
 
 async function handler(
-  req: NextApiRequest,
+  req: NextRequest,
   res: NextApiResponse<Data>
 ) {
   const all = await chatsRepo.getAll();
@@ -17,4 +17,4 @@ async function handler(
 
 }
 
-export { handler as GET, };
+export { handler as GET };
