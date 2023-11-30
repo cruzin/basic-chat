@@ -29,6 +29,7 @@ a simple max width would keep it slim
 
 Backend wise, noteworthy things are
 * the sqlite database and its dao is in the /db folder
+* pages/api/socket.ts is the websocket server, and is placed in the older router, as websockets are not supported in the approuter yet it seems
 
 
 
