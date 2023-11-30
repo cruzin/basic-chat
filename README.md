@@ -9,7 +9,7 @@ Run the development server:
 npm run setupDB
 # then
 npm run dev
-# or
+# or just
 docker-compose up
 ```
 
@@ -24,6 +24,8 @@ Frontend wise, I guess noteworthy things are
 * The use of context to retain the GuestUsername from the localhost:3000/ page to the chats page. 
 * The use of websockets to ensure the chat keeps up to date (no need to refresh the page for the latest messages)
 * The use of a custom hook to handle the websocket connection
+* if the chat is "too wide" it's because i thought that the width of it was supposed to be flexible. 
+a simple max width would keep it slim  
 
 Backend wise, noteworthy things are
 * the sqlite database and its dao is in the /db folder

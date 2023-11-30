@@ -9,34 +9,34 @@ function main() {
   const chat2 = { name: "A mystery chat" };
   const chatsRepo = new ChatsRepository(dao);
   const messagesRepo = new MessagesRepository(dao);
-  // let chatstId;
+  // let chatId;
 
   chatsRepo.createTable()
     .then(() => messagesRepo.createTable())
     .then(() => chatsRepo.create(chat1.name))
     .then(() => chatsRepo.create(chat2.name))
     .then((data) => {
-      projectId = data.id;
+      // chatId = data.id;
       const messages = [
         {
           name: "Admin",
           text: "Welcome to this chat",
           isComplete: new Date().getTime(),
-          projectId,
+          chatId:1,
         },
         {
           name: "Admin",
           text: "Write a  message",
           isComplete: new Date().getTime(),
-          projectId,
+          chatId:1,
         },
       ];
       return Promise.all(messages.map((task) => {
-        const { name, text, isComplete, projectId } = task;
-        return messagesRepo.create(name, text, isComplete, projectId);
+        const { name, text, isComplete, chatId } = task;
+        return messagesRepo.create(name, text, isComplete, chatId);
       }));
     })
-    .then(() => chatsRepo.getById(projectId))
+    .then(() => chatsRepo.getById(chatId))
     .then((project) => {
       console.log(`\nRetreived project from database`);
       console.log(`chat id = ${project.id}`);
