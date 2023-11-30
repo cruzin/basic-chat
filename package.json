@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "resetDB": "node db/main.js"
+    "setupDB": "node db/main.js"
   },
   "dependencies": {
     "@types/socket.io": "^3.0.2",
