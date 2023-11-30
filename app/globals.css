@@ -1,0 +1,49 @@
+
+:root {
+    --background: 0, 0, 0;
+    --textcolor: #4a5159;
+    /*--background-start-rgb: 214, 219, 220;*/
+    /*--background-end-rgb: 255, 255, 255;*/
+}
+
+
+body {
+    color: rgb(var(--background));
+    background: rgb(var(--textcolor));
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.frontpage-centerer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    gap: 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.frontpage-centerer > form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.frontpage-centerer > form > button {
+    margin-top: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    border: solid 2px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
