@@ -55,16 +55,6 @@ class MessageRepository {
     )
   }
 
-  getById(id) {
-    return this.dao.get(
-      `SELECT * FROM messages WHERE id = ?`,
-      [id])
-  }
-
-  getAll() {
-    return this.dao.all(`SELECT * FROM messages`)
-  }
-
   getMessages(chatId) {
     return this.dao.all(
       `SELECT * FROM messages WHERE chatId = ?`,

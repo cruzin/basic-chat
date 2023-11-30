@@ -17,35 +17,10 @@ class ChatsRepository {
       [name])
   }
 
-  update(project) {
-    const { id, name } = project
-    return this.dao.run(
-      `UPDATE chats SET name = ? WHERE id = ?`,
-      [name, id]
-    )
-  }
-
-  delete(id) {
-    return this.dao.run(
-      `DELETE FROM chats WHERE id = ?`,
-      [id]
-    )
-  }
-
   getById(id) {
     return this.dao.get(
       `SELECT * FROM chats WHERE id = ?`,
       [id])
-  }
-
-  getAll() {
-    return this.dao.all(`SELECT * FROM chats`)
-  }
-
-  getMessages(projectId) {
-    return this.dao.all(
-      `SELECT * FROM messages WHERE projectId = ?`,
-      [projectId])
   }
 }
 
