@@ -1,5 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { messagesRepo } from "@/db/consts";
 
 type Data = {
@@ -7,12 +6,11 @@ type Data = {
 }
 
 async function handler(
-  req: NextApiRequest, {
+  req: NextRequest, {
     params: {
       pid,
     },
   }: { params: { pid: string } },
-  // res: NextApiResponse<Data>
 ) {
   const messages = await messagesRepo.getMessages(pid);
   return NextResponse.json({ result: messages, status: 200 });

@@ -1,13 +1,12 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 type Data = {
   hb: string
 }
 
 function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+  req: NextRequest,
+  res: NextResponse<Data>
 ) {
   return NextResponse.json({ hb: 'ALIVE', status: 200 })
 }
