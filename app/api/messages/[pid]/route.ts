@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { messagesRepo } from "@/db/consts";
 
-type Data = {
-  result: string
-}
 
 async function handler(
   req: NextRequest, {

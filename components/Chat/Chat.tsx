@@ -1,10 +1,10 @@
 import { useGuestUser } from "@/components/context/GuestUserContext";
-import { ChangeEvent, MouseEventHandler, useCallback, useEffect, useRef, useState } from "react";
-import useChat from "@/components/hooks/useChat";
+import { useEffect, useRef } from "react";
+import useChat, { MsgType } from "@/components/hooks/useChat";
 import { useRouter } from "next/navigation";
-import { MsgType } from "@/components/hooks/useChat";
 import styles from "./chat.module.css";
 import classNames from "classnames";
+import { ChatInput } from "@/components/Chat/ChatInput";
 
 
 const Chat = ({ chatId, preExistingMessages }: { chatId?: string, preExistingMessages: MsgType[] }) => {
@@ -35,14 +35,7 @@ const Chat = ({ chatId, preExistingMessages }: { chatId?: string, preExistingMes
             const isYou = message.user === guestUser;
             const msgDate = new Date(message.timeStamp);
             return (
-              <div key={i} className={classNames(styles.message, isYou && styles.self)}>
-                <span
-                  className={classNames(styles.userName, isYou && styles.self)}>{isYou ? "You" : message.user}</span>
-                <div
-                  className={classNames(styles.text, isYou && styles.self)}>{message.message}</div>
-                <span
-                  className={styles.date}>{msgDate.getDate() + " " + msgDate.toLocaleString("default", { month: "short" }) + " " + msgDate.getFullYear() + " " + msgDate.getHours() + ":" + msgDate.getMinutes()}</span>
-              </div>
+              <Message key={i} isYou={isYou} message={message} msgDate={msgDate} />
             );
           })}
           <AlwaysScrollToBottom />
@@ -63,35 +56,16 @@ const AlwaysScrollToBottom = () => {
   return <div ref={elementRef} />;
 };
 
-const ChatInput = ({ handleMessageSubmit }: {
-  handleMessageSubmit: (message: string) => void,
-}) => {
-
-  const [input, setInput] = useState("");
-  const handleSend = () => {
-    if (input !== "") {
-      handleMessageSubmit(input);
-      setInput("");
-    }
-  };
-
-  return  <div className={styles.chatInputArea}>
-    <textarea
-      className={styles.chatInput}
-      value={input}
-      onChange={(e) => {
-        setInput(e.target.value);
-      }}
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();
-          handleSend();
-        }
-      }}
-    />
-    <button className={styles.sendButton} onClick={handleSend}>Send</button>
+function Message({ isYou, message, msgDate }: { isYou: boolean, message: MsgType, msgDate: Date }) {
+  return <div className={classNames(styles.message, isYou && styles.self)}>
+    <span
+      className={classNames(styles.userName, isYou && styles.self)}>{isYou ? "You" : message.user}</span>
+    <div className={classNames(styles.text, isYou && styles.self)}>{message.message}</div>
+    <span className={styles.date}>{msgDate.getDate() + " " +
+      msgDate.toLocaleString("default", { month: "short" }) + " " + msgDate.getFullYear()
+      + " " + msgDate.getHours() + ":" + msgDate.getMinutes()}</span>
   </div>;
-};
+}
 
 
 export default Chat;

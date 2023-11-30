@@ -13,7 +13,7 @@ npm run dev
 docker-compose up
 ```
 
-The first thing you might notice about this coding challenge is that i did not make the backend with a JVM
+The first thing you might notice about this coding challenge is that I did not make the backend with a JVM
 This is because I am more familiar with Nextjs and I had an existing project that could quickly modify as the backed.
 
 Even with taking this shortcut I still pushed past the 5 hours limit.
