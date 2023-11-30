@@ -1,9 +1,4 @@
-import Image from "next/image";
-import TestCompo from "../components/TestCompo";
 import GoToChat from "../components/GoToChat/GoToChat";
-
-
-
 
 
 export default function Home() {
@@ -12,10 +7,8 @@ export default function Home() {
     <main>
       <div className="frontpage-centerer">
         <h1>Welcome to your localhost Nextjs chat</h1>
-
-          <GoToChat />
-          {/*<TestCompo />*/}
-        </div>
+        <GoToChat />
+      </div>
     </main>
   );
 }
